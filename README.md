@@ -23,3 +23,8 @@ npm run build:update   # dist/ABAbMvc_service.js
 - `persistBundle(req, AB, bundle)` — `AB.definitionCreate` with rollback on failure
 
 Secrets: processed in the `definition_manager` handler before `validateBundle` (uses `processSecrets` like `definition-create`).
+
+## Browser / Designer
+
+- **`AB.abMvc`** (tenant plugin): optional; exposes the same helpers when the service bundle loads. **Do not use from `ABDesigner`** — shell stays plugin-agnostic.
+- **Creating processes in Designer**: use **`AB.definitionBundleNewMinimalProcess`** + **`AB.definitionBundleCreate`** (`POST /definition/bundle/create`) on the platform `ABFactory`; validation runs server-side.

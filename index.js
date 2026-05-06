@@ -1,15 +1,14 @@
-// NOTE: our webpack build process will ignore this file and
-// create service and web compiled files instead.
-// Service and web directories will be added as optional commands later
-export default function register(API) {
-   // TODO: Add service and web registration when those directories are created
-   switch (API.platform) {
-      case "service":
-         // service(API);
-         break;
+/**
+ * Optional loader when something invokes `register(pluginAPI)` directly (not the URL/VM path).
+ * Prefer consuming `AB.abMvc` after the webpack service bundle runs (see service.js).
+ */
+const lib = require("./service/serviceRegister.js");
 
-      case "web":
-         // web(API);
-         break;
+module.exports = function register(API) {
+   if (API.platform === "service" && API.AB) {
+      API.AB.abMvc = lib;
    }
-}
+   if (typeof API.registerLib === "function") {
+      API.registerLib("ab_mvc", lib);
+   }
+};

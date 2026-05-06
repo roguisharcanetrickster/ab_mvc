@@ -1,10 +1,10 @@
 {
    "name": "ab-plugin-abmvc",
    "version": "1.0.0",
-   "description": "A new AppBuilder plugin",
+   "description": "AB MVC — validate and persist process definition bundles (process + child rows).",
    "main": "index.js",
    "scripts": {
-      "lint": "eslint . styles/team-widget.css --fix --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
+      "lint": "eslint . --fix --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
       "test": "echo \"Error: no test specified\" && exit 1",
       "build:update": "webpack-cli --config webpack.prod.js",
       "build:dev": "webpack-cli --config webpack.dev.js",
@@ -20,19 +20,11 @@
       "eslint-config-prettier": "^8.5.0",
       "eslint-plugin-prettier": "^4.2.1",
       "prettier": "^2.2.1",
-      "style-loader": "^4.0.0",
       "webpack": "^5.102.1",
       "webpack-cli": "^6.0.1",
       "webpack-merge": "^6.0.1"
    },
    "dependencies": {
-      "axios": "^1.10.0",
-      "buffer": "^6.0.3",
-      "crypto-browserify": "^3.12.1",
-      "oauth-1.0a": "^2.2.6",
-      "process": "^0.11.10",
-      "stream-browserify": "^3.0.0",
-      "vm-browserify": "^1.1.2"
+      "zod": "^3.24.1"
    }
 }
-

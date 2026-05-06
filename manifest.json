@@ -1,8 +1,15 @@
 {
-   "name": "ab_mvc",
-   "description": "A new AppBuilder plugin",
+   "name": "AB MVC Definition Bundle",
+   "description": "Validate and persist process definition bundles (process + child rows).",
    "key": "ab_mvc",
    "version": "0.0.0",
    "icon": "fa-puzzle-piece",
-   "plugins": []
+   "plugins": [
+      {
+         "platform": "service",
+         "type": "lib",
+         "key": "ab_mvc",
+         "path": "./ABAbMvc_service.js"
+      }
+   ]
 }
