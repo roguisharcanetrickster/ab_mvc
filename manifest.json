@@ -1,6 +1,6 @@
 {
    "name": "AB MVC Definition Bundle",
-   "description": "Validate and persist process definition bundles (process + child rows).",
+   "description": "Validate and persist process definition bundles (process + child rows). Also ships an LLM widget that creates definition bundles via /llm/complete + /definition/bundle/create.",
    "key": "ab_mvc",
    "version": "0.0.0",
    "icon": "fa-puzzle-piece",
@@ -10,6 +10,20 @@
          "type": "lib",
          "key": "ab_mvc",
          "path": "./ABAbMvc_service.js"
+      },
+      {
+         "name": "View_LLM Web",
+         "key": "view_llm_web_props",
+         "platform": "web",
+         "type": "properties",
+         "path": "./ABAbMvc_properties.mjs"
+      },
+      {
+         "name": "View_LLM Web",
+         "key": "view_llm_web",
+         "platform": "web",
+         "type": "view",
+         "path": "./ABAbMvc_web.mjs"
       }
    ]
 }

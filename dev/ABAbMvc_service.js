@@ -17,8 +17,20 @@ return /******/ (() => { // webpackBootstrap
   \********************/
 (module, __unused_webpack_exports, __webpack_require__) {
 
-/** Webpack service entry — re-exports bundle helpers for UMD build (ABAbMvc_service.js). */
-module.exports = __webpack_require__(/*! ./service/serviceRegister.js */ "./service/serviceRegister.js");
+/**
+ * Webpack service entry for UMD bundle `ABAbMvc_service.js`.
+ *
+ * Tenant bootstrap loads this URL and passes `module.exports.Plugin` to
+ * `AB.pluginRegister`, which requires a **function** `(pluginAPI) => class | class[]`.
+ * Attach helpers on `pluginAPI.AB.abMvc`; return `[]` when there are no ClassManager types.
+ */
+var lib = __webpack_require__(/*! ./service/serviceRegister.js */ "./service/serviceRegister.js");
+module.exports = function abMvcServicePlugin(pluginAPI) {
+  if (pluginAPI && pluginAPI.AB) {
+    pluginAPI.AB.abMvc = lib;
+  }
+  return [];
+};
 
 /***/ },
 
@@ -4838,7 +4850,7 @@ exports.NEVER = parseUtil_js_1.INVALID;
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module used 'module' so it can't be inlined
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./service.js");
 /******/ 	
 /******/ 	return __webpack_exports__;
